@@ -8,7 +8,7 @@ export interface ActionReducer extends Action {
 export function actionReducer(actionModule: object, initialState: any) {
   return (state = initialState, action: Action) => {
     for (const [actionType, actionClass] of Object.entries(actionModule)) {
-      checkNameMisMatch(action, actionClass);
+      checkNameMisMatch(action, actionType, actionClass);
 
       if (action.type === actionType) return new actionClass().reduce(state);
     }
@@ -17,13 +17,22 @@ export function actionReducer(actionModule: object, initialState: any) {
   };
 }
 
-function checkNameMisMatch(actionType: object, actionClass: any) {
+function checkNameMisMatch(dispatchedAction: Action, actionType: string, actionClass: any) {
   if (environment.production) return;
-  const storeAction = Object.getPrototypeOf(actionType).constructor;
+  const dispatchedActionConstructor = Object.getPrototypeOf(dispatchedAction).constructor;
   // check if class name differs from `type` field in class;
-  if (storeAction.name !== 'Object' && storeAction.name !== new actionClass().constructor.name) {
+  if (
+    // ignore initialization
+    dispatchedActionConstructor.name !== 'Object' &&
+    // dispatched actions rely on the `type` prop, check against the dispatched actions class name
+    dispatchedAction.type !== dispatchedActionConstructor.name &&
+    // catch the incorrect action being called
+    dispatchedAction.type === actionType
+  ) {
     console.warn(
-      `name mismatch, expected ${storeAction.name}, got ${new actionClass().constructor.name}`
+      `ActionReducer "type" mismatch\n` +
+        `> ${dispatchedActionConstructor.name} was dispatched but\n` +
+        `> ${new actionClass().constructor.name} ActionReducer class was called`
     );
   }
 }
