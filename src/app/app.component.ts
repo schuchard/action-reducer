@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { Increment, Decrement, Reset } from './store/counter.actions';
+import { CounterIncrement, CounterDecrement, CounterReset } from './store/counter.actions';
 
 @Component({
   selector: 'app-root',
@@ -16,14 +16,14 @@ export class AppComponent {
   }
 
   increment() {
-    this.store.dispatch(new Increment());
+    this.store.dispatch(new CounterIncrement());
   }
 
   decrement() {
-    this.store.dispatch(new Decrement());
+    this.store.dispatch(new CounterDecrement());
   }
 
   reset() {
-    this.store.dispatch(new Reset());
+    this.store.dispatch(new CounterReset());
   }
 }
