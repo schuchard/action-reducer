@@ -5,12 +5,16 @@ export interface ActionReducer extends Action {
   reduce: (state: any) => any;
 }
 
+interface ActionPayload extends Action {
+  payload: any;
+}
+
 export function actionReducer(actionModule: object, initialState: any) {
-  return (state = initialState, action: Action) => {
+  return (state = initialState, action: ActionPayload) => {
     for (const [actionType, actionClass] of Object.entries(actionModule)) {
       checkActionTypeMisMatch(action, actionType, actionClass);
 
-      if (action.type === actionType) return new actionClass().reduce(state);
+      if (action.type === actionType) return new actionClass(action.payload).reduce(state);
     }
 
     return state;

@@ -2,7 +2,12 @@ import { Component } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Increment, Decrement, Reset } from './store/counter1.actions';
-import { Counter2Increment, Counter2Decrement, Counter2Reset } from './store/counter2.actions';
+import {
+  Counter2Increment,
+  Counter2Decrement,
+  Counter2Reset,
+  Counter2Add5,
+} from './store/counter2.actions';
 
 @Component({
   selector: 'app-root',
@@ -32,6 +37,10 @@ export class AppComponent {
 
   increment2() {
     this.store.dispatch(new Counter2Increment());
+  }
+
+  increment2add5() {
+    this.store.dispatch(new Counter2Add5(5));
   }
 
   decrement2() {

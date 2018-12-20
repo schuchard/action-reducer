@@ -20,3 +20,11 @@ export class Counter2Reset implements ActionReducer {
     return 0;
   }
 }
+
+export class Counter2Add5 implements ActionReducer {
+  readonly type = Counter2Add5.name;
+  constructor(private payload: number) {}
+  reduce(state) {
+    return state + this.payload;
+  }
+}
