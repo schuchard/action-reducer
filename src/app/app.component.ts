@@ -1,13 +1,8 @@
 import { Component } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { Increment, Decrement, Reset } from './store/counter1.actions';
-import {
-  Counter2Increment,
-  Counter2Decrement,
-  Counter2Reset,
-  Counter2Add5,
-} from './store/counter2.actions';
+import { Increment, Decrement, Reset } from './store/counter.actions';
+import { ArIncrement, ArDecrement, ArReset, ArAdd5 } from './store/action-reducer.actions';
 
 @Component({
   selector: 'app-root',
@@ -15,12 +10,12 @@ import {
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  count1$: Observable<number>;
-  count2$: Observable<number>;
+  count$: Observable<number>;
+  actionReducerCount$: Observable<number>;
 
   constructor(private store: Store<{ count: number }>) {
-    this.count1$ = store.pipe(select('count1'));
-    this.count2$ = store.pipe(select('count2'));
+    this.count$ = store.pipe(select('count'));
+    this.actionReducerCount$ = store.pipe(select('actionReducerCount'));
   }
 
   increment() {
@@ -35,19 +30,19 @@ export class AppComponent {
     this.store.dispatch(new Reset());
   }
 
-  increment2() {
-    this.store.dispatch(new Counter2Increment());
+  ArIncrement() {
+    this.store.dispatch(new ArIncrement());
   }
 
-  increment2add5() {
-    this.store.dispatch(new Counter2Add5(5));
+  ArAdd5() {
+    this.store.dispatch(new ArAdd5(5));
   }
 
-  decrement2() {
-    this.store.dispatch(new Counter2Decrement());
+  ArDecrement() {
+    this.store.dispatch(new ArDecrement());
   }
 
-  reset2() {
-    this.store.dispatch(new Counter2Reset());
+  ArReset() {
+    this.store.dispatch(new ArReset());
   }
 }

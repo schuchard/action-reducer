@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { ActionTypes } from './counter1.actions';
+import { ActionTypes } from './counter.actions';
 
 export const initialState = 0;
 

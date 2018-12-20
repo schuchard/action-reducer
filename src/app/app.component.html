@@ -1,11 +1,11 @@
 <h3>Action class + Reducer switch statement</h3>
-<div>Current Count: {{ count1$ | async }}</div>
+<div>Current Count: {{ count$ | async }}</div>
 
 <button (click)="decrement()">-</button> <button (click)="reset()">reset</button>
 <button (click)="increment()">+</button>
 
 <h3>Combined Action/Reducer</h3>
-<div>Current Count: {{ count2$ | async }}</div>
+<div>Current Count: {{ actionReducerCount$ | async }}</div>
 
-<button (click)="decrement2()">-</button> <button (click)="reset2()">reset</button>
-<button (click)="increment2()">+</button> <button (click)="increment2add5()">+5</button>
+<button (click)="ArDecrement()">-</button> <button (click)="ArReset()">reset</button>
+<button (click)="ArIncrement()">+</button> <button (click)="ArAdd5()">+5</button>

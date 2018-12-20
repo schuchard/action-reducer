@@ -7,8 +7,9 @@ import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
-import { counterReducer } from './store/counter1.reducer';
-import * as counter2Actions from './store/counter2.actions';
+import { counterReducer } from './store/counter.reducer';
+
+import * as ArCounter from './store/action-reducer.actions';
 import { actionReducer } from 'src/lib/action-reducer';
 
 @NgModule({
@@ -17,8 +18,8 @@ import { actionReducer } from 'src/lib/action-reducer';
     BrowserModule,
     AppRoutingModule,
     StoreModule.forRoot({
-      count1: counterReducer,
-      count2: actionReducer(counter2Actions, 0),
+      count: counterReducer,
+      actionReducerCount: actionReducer(ArCounter, 0),
     }),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
