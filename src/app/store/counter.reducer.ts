@@ -4,8 +4,8 @@ import * as CounterStore from './counter.actions';
 export const initialState = 0;
 
 export function counterReducer(state = initialState, action: Action) {
-  for (const [key, val] of Object.entries(CounterStore)) {
-    if (action.type === key) return new val().reduce(state);
+  for (const [actionType, actionClass] of Object.entries(CounterStore)) {
+    if (action.type === actionType) return new actionClass().reduce(state);
   }
 
   return state;
