@@ -8,7 +8,7 @@ export interface ActionReducer extends Action {
 export function actionReducer(actionModule: object, initialState: any) {
   return (state = initialState, action: Action) => {
     for (const [actionType, actionClass] of Object.entries(actionModule)) {
-      checkNameMisMatch(action, actionType, actionClass);
+      checkActionTypeMisMatch(action, actionType, actionClass);
 
       if (action.type === actionType) return new actionClass().reduce(state);
     }
@@ -17,7 +17,7 @@ export function actionReducer(actionModule: object, initialState: any) {
   };
 }
 
-function checkNameMisMatch(dispatchedAction: Action, actionType: string, actionClass: any) {
+function checkActionTypeMisMatch(dispatchedAction: Action, actionType: string, actionClass: any) {
   if (environment.production) return;
   const dispatchedActionConstructor = Object.getPrototypeOf(dispatchedAction).constructor;
   // check if class name differs from `type` field in class;
