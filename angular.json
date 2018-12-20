@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "wrap-reducer": {
+    "action-reducer": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/wrap-reducer",
+            "outputPath": "dist/action-reducer",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -56,18 +56,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "wrap-reducer:build"
+            "browserTarget": "action-reducer:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "wrap-reducer:build:production"
+              "browserTarget": "action-reducer:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "wrap-reducer:build"
+            "browserTarget": "action-reducer:build"
           }
         },
         "test": {
@@ -91,7 +91,7 @@
         }
       }
     },
-    "wrap-reducer-e2e": {
+    "action-reducer-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -100,11 +100,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "wrap-reducer:serve"
+            "devServerTarget": "action-reducer:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "wrap-reducer:serve:production"
+              "devServerTarget": "action-reducer:serve:production"
             }
           }
         },
@@ -118,5 +118,5 @@
       }
     }
   },
-  "defaultProject": "wrap-reducer"
+  "defaultProject": "action-reducer"
 }
