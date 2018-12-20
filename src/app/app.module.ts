@@ -8,15 +8,9 @@ import { StoreModule } from '@ngrx/store';
 import { counterReducer } from './store/counter.reducer';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    StoreModule.forRoot({ count: counterReducer })
-  ],
+  declarations: [AppComponent],
+  imports: [BrowserModule, AppRoutingModule, StoreModule.forRoot({ count: counterReducer })],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
