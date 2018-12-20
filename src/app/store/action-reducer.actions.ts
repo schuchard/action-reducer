@@ -1,4 +1,5 @@
 import { ActionReducer } from 'src/lib/action-reducer';
+import { Observable, of } from 'rxjs';
 
 export class ArIncrement implements ActionReducer {
   readonly type = ArIncrement.name;
@@ -26,5 +27,9 @@ export class ArAdd5 implements ActionReducer {
   constructor(private payload: number) {}
   reduce(state) {
     return state + this.payload;
+  }
+
+  onLoadEffect(): Observable<number> {
+    return of(55);
   }
 }
