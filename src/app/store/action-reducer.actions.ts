@@ -25,11 +25,8 @@ export class ArReset implements ActionReducer {
 export class ArAdd5 implements ActionReducer {
   readonly type = ArAdd5.name;
   constructor(private payload: number) {}
+
   reduce(state) {
     return state + this.payload;
-  }
-
-  onLoadEffect(): Observable<number> {
-    return of(55);
   }
 }
