@@ -1,5 +1,4 @@
 import { ActionReducer } from 'src/lib/action-reducer';
-import { Observable, of } from 'rxjs';
 
 export class ArIncrement implements ActionReducer {
   readonly type = ArIncrement.name;
@@ -22,8 +21,8 @@ export class ArReset implements ActionReducer {
   }
 }
 
-export class ArAdd5 implements ActionReducer {
-  readonly type = ArAdd5.name;
+export class ArAddBy implements ActionReducer {
+  readonly type = ArAddBy.name;
   constructor(private payload: number) {}
 
   reduce(state) {

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Increment, Decrement, Reset } from './store/counter.actions';
-import { ArIncrement, ArDecrement, ArReset, ArAdd5 } from './store/action-reducer.actions';
+import { ArIncrement, ArDecrement, ArReset, ArAddBy } from './store/action-reducer.actions';
 
 @Component({
   selector: 'app-root',
@@ -34,8 +34,8 @@ export class AppComponent {
     this.store.dispatch(new ArIncrement());
   }
 
-  ArAdd5() {
-    this.store.dispatch(new ArAdd5(5));
+  ArAddBy() {
+    this.store.dispatch(new ArAddBy(5));
   }
 
   ArDecrement() {
