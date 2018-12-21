@@ -1,7 +1,7 @@
 import { ActionReducer } from 'src/app/store/action-reducer.lib';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Actions, Effect, ofType } from '@ngrx/effects';
+import { Actions, Effect } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 
 export class ArIncrement implements ActionReducer {
@@ -43,6 +43,6 @@ export class ArResetSuccess implements ActionReducer {
   readonly type = ArResetSuccess.name;
 
   reduce(state) {
-    return state;
+    return state + 101;
   }
 }
