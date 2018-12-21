@@ -11,17 +11,21 @@ interface ActionPayload extends Action {
 
 export function actionReducer(actionModule: object, initialState: any) {
   return (state = initialState, action: ActionPayload) => {
-    for (const [actionType, actionClass] of Object.entries(actionModule)) {
-      checkActionTypeMisMatch(action, actionType, actionClass);
+    for (const [actionClassName, actionClass] of Object.entries(actionModule)) {
+      checkActionTypeMisMatch(action, actionClassName, actionClass);
 
-      if (action.type === actionType) return new actionClass(action.payload).reduce(state);
+      if (action.type === actionClassName) return new actionClass(action.payload).reduce(state);
     }
 
     return state;
   };
 }
 
-function checkActionTypeMisMatch(dispatchedAction: Action, actionType: string, actionClass: any) {
+function checkActionTypeMisMatch(
+  dispatchedAction: Action,
+  actionClassName: string,
+  actionClass: any
+) {
   if (environment.production) return;
   const dispatchedActionConstructor = Object.getPrototypeOf(dispatchedAction).constructor;
   // check if class name differs from `type` field in class;
@@ -31,7 +35,7 @@ function checkActionTypeMisMatch(dispatchedAction: Action, actionType: string, a
     // dispatched actions rely on the `type` prop, check against the dispatched actions class name
     dispatchedAction.type !== dispatchedActionConstructor.name &&
     // catch the incorrect action being called
-    dispatchedAction.type === actionType
+    dispatchedAction.type === actionClassName
   ) {
     console.warn(
       `ActionReducer "type" mismatch\n` +
