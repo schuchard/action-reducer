@@ -24,7 +24,6 @@ export class ArReset implements ActionReducer {
 export class ArAddBy implements ActionReducer {
   readonly type = ArAddBy.name;
   constructor(private payload: number) {}
-
   reduce(state) {
     return state + this.payload;
   }
