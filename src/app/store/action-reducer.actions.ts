@@ -1,4 +1,8 @@
 import { ActionReducer } from 'src/app/store/action-reducer.lib';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { Actions, Effect, ofType } from '@ngrx/effects';
+import { Action } from '@ngrx/store';
 
 export class ArIncrement implements ActionReducer {
   readonly type = ArIncrement.name;
@@ -16,6 +20,12 @@ export class ArDecrement implements ActionReducer {
 
 export class ArReset implements ActionReducer {
   readonly type = ArReset.name;
+
+  @Effect()
+  resetSuccess$: Observable<Action> = this.actions$.pipe(map(() => new ArResetSuccess()));
+
+  constructor(private actions$: Actions) {}
+
   reduce(state) {
     return 0;
   }
@@ -26,5 +36,13 @@ export class ArAddBy implements ActionReducer {
   constructor(private payload: number) {}
   reduce(state) {
     return state + this.payload;
+  }
+}
+
+export class ArResetSuccess implements ActionReducer {
+  readonly type = ArResetSuccess.name;
+
+  reduce(state) {
+    return state;
   }
 }
