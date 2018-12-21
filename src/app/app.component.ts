@@ -11,11 +11,11 @@ import { ArIncrement, ArDecrement, ArReset, ArAddBy } from './store/action-reduc
 })
 export class AppComponent {
   count$: Observable<number>;
-  actionReducerCount$: Observable<number>;
+  arCount$: Observable<number>;
 
   constructor(private store: Store<{ count: number }>) {
     this.count$ = store.pipe(select('count'));
-    this.actionReducerCount$ = store.pipe(select('actionReducerCount'));
+    this.arCount$ = store.pipe(select('arCount'));
   }
 
   increment() {

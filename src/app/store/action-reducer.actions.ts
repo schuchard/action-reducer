@@ -1,4 +1,4 @@
-import { ActionReducer } from 'src/lib/action-reducer';
+import { ActionReducer } from 'src/app/store/action-reducer.lib';
 
 export class ArIncrement implements ActionReducer {
   readonly type = ArIncrement.name;
