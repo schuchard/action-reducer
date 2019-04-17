@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Increment, Decrement, Reset } from './store/counter.actions';
-import { ArIncrement, ArDecrement, ArReset, ArAddBy, ARState } from './action-reducer/action-reducer';
+import { ArIncrement, ArDecrement, ArReset, ArAddBy, ArState } from './action-reducer/action-reducer';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +11,7 @@ import { ArIncrement, ArDecrement, ArReset, ArAddBy, ARState } from './action-re
 })
 export class AppComponent {
   count$: Observable<number>;
-  arCount$: Observable<ARState>;
+  arCount$: Observable<ArState>;
 
   constructor(private store: Store<{ count: number }>) {
     this.count$ = store.pipe(select('count'));

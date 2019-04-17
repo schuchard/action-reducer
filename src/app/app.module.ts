@@ -20,7 +20,7 @@ import { EffectsModule } from '@ngrx/effects';
     AppRoutingModule,
     StoreModule.forRoot({
       count: counterReducer,
-      arCount: actionReducer(ArCounter, {count: 0, loading: false}),
+      arCount: actionReducer(ArCounter, ArCounter.ArInitialState),
     }),
     EffectsModule.forRoot([ArCounter.ArReset]),
     StoreDevtoolsModule.instrument({
