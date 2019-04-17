@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Increment, Decrement, Reset } from './store/counter.actions';
-import { ArIncrement, ArDecrement, ArReset, ArAddBy } from './store/action-reducer.actions';
+import { ArIncrement, ArDecrement, ArReset, ArAddBy } from './action-reducer/action-reducer';
 
 @Component({
   selector: 'app-root',

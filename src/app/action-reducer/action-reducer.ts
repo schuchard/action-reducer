@@ -1,4 +1,4 @@
-import { ActionReducer } from 'src/app/store/action-reducer.lib';
+import { ActionReducer } from 'src/app/action-reducer/action-reducer.lib';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { Actions, Effect, ofType } from '@ngrx/effects';
