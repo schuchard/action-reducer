@@ -1,11 +1,11 @@
 <h3>Action class + Reducer switch statement</h3>
-<div>Current Count: {{ count$ | async }}</div>
+<div class="count">Current Count: {{ count$ | async }}</div>
 
 <button (click)="decrement()">-</button> <button (click)="reset()">reset</button>
 <button (click)="increment()">+</button>
 
 <h3>Combined Action/Reducer</h3>
-<div>
+<div class="count">
   Current Count: {{ (arCount$ | async).count }}
   <ng-container *ngIf="(arCount$ | async).loading"> loading...</ng-container>
 </div>
