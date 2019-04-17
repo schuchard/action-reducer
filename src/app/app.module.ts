@@ -23,7 +23,7 @@ import { CounterEffects } from './store/counter.effects';
       count: counterReducer,
       arCount: actionReducer(ArCounter, 0),
     }),
-    EffectsModule.forRoot([CounterEffects]),
+    EffectsModule.forRoot([ArCounter.ArReset]),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode

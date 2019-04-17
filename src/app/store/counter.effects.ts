@@ -11,7 +11,7 @@ export class CounterEffects {
   @Effect()
   reset$: Observable<Action> = this.actions$.pipe(
     ofType(new ArReset().type),
-    map(() => new ArResetSuccess())
+    map(() => new ArResetSuccess(0))
   );
 
   constructor(private actions$: Actions) {}
