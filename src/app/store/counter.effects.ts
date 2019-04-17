@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Action } from '@ngrx/store';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Observable } from 'rxjs';
@@ -15,5 +14,5 @@ export class CounterEffects {
     map(() => new ArResetSuccess())
   );
 
-  constructor(private http: HttpClient, private actions$: Actions) {}
+  constructor(private actions$: Actions) {}
 }
