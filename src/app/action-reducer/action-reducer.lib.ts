@@ -1,8 +1,8 @@
 import { Action } from '@ngrx/store';
 import { environment } from 'src/environments/environment';
 
-export interface ActionReducer extends Action {
-  reduce?: (state: any) => any;
+export interface ActionReducer<T = {}> extends Action {
+  reduce?: (state: T) => T;
 }
 
 interface ActionPayload extends Action {

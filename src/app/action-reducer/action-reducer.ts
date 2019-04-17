@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 
 export interface ArState {
   count: number;
-  loading: false;
+  loading: boolean;
 }
 
 export const ArInitialState: ArState = {
@@ -15,15 +15,16 @@ export const ArInitialState: ArState = {
   loading: false,
 };
 
-export class ArIncrement implements ActionReducer {
+export class ArIncrement implements ActionReducer<ArState> {
   readonly type = this.constructor.name;
 
   reduce(state: ArState) {
+    // return { ...state, count: '1 }; // this errors
     return { ...state, count: state.count + 1 };
   }
 }
 
-export class ArDecrement implements ActionReducer {
+export class ArDecrement implements ActionReducer<ArState> {
   readonly type = this.constructor.name;
 
   reduce(state: ArState) {
@@ -32,7 +33,7 @@ export class ArDecrement implements ActionReducer {
 }
 
 @Injectable() // necessary for Effect Module
-export class ArReset implements ActionReducer {
+export class ArReset implements ActionReducer<ArState> {
   readonly type = this.constructor.name;
 
   @Effect()
@@ -51,7 +52,7 @@ export class ArReset implements ActionReducer {
   }
 }
 
-export class ArAddBy implements ActionReducer {
+export class ArAddBy implements ActionReducer<ArState> {
   readonly type = this.constructor.name;
 
   constructor(private payload: number) {}
@@ -61,7 +62,7 @@ export class ArAddBy implements ActionReducer {
   }
 }
 
-export class ArResetSuccess implements ActionReducer {
+export class ArResetSuccess implements ActionReducer<ArState> {
   readonly type = this.constructor.name;
 
   constructor(private payload?: number) {}
