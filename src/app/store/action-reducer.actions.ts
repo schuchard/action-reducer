@@ -22,9 +22,10 @@ export class ArReset implements ActionReducer {
   readonly type = ArReset.name;
 
   @Effect()
-  resetSuccess$: Observable<Action> = this.actions$.pipe(map(() => new ArResetSuccess()));
+  resetSuccess$: Observable<Action> =
+    this.actions$ && this.actions$.pipe(map(() => new ArResetSuccess()));
 
-  constructor(private actions$: Actions) {}
+  constructor(private actions$?: Actions) {}
 
   reduce(state) {
     return 0;
