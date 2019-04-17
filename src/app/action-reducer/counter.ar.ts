@@ -19,7 +19,7 @@ export class ArIncrement implements ActionReducer<ArState> {
   readonly type = this.constructor.name;
 
   reduce(state: ArState) {
-    // return { ...state, count: '1 }; // this errors
+    // return { ...state, count: '1' }; // this errors
     return { ...state, count: state.count + 1 };
   }
 }
