@@ -9,7 +9,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { counterReducer } from './store/counter.reducer';
 
-import * as ArCounter from './action-reducer/action-reducer';
+import * as ArCounter from './action-reducer/counter.ar';
 import { actionReducer } from 'src/app/action-reducer/action-reducer.lib';
 import { EffectsModule } from '@ngrx/effects';
 

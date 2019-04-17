@@ -3,7 +3,7 @@ import { Action } from '@ngrx/store';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { ArResetSuccess, ArReset } from '../action-reducer/action-reducer';
+import { ArResetSuccess, ArReset } from '../action-reducer/counter.ar';
 
 @Injectable()
 export class CounterEffects {
