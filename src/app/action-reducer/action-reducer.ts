@@ -34,9 +34,7 @@ export class ArReset implements ActionReducer {
       map(() => new ArResetSuccess(99))
     );
 
-  constructor(private actions$?: Actions) {
-    console.log('ArReset', actions$);
-  }
+  constructor(private actions$?: Actions) {}
 
 }
 
