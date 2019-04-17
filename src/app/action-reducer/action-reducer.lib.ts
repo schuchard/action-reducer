@@ -2,7 +2,7 @@ import { Action } from '@ngrx/store';
 import { environment } from 'src/environments/environment';
 
 export interface ActionReducer extends Action {
-  reduce: (state: any) => any;
+  reduce?: (state: any) => any;
 }
 
 interface ActionPayload extends Action {
@@ -14,7 +14,13 @@ export function actionReducer(actionModule: object, initialState: any) {
     for (const [actionClassName, actionClass] of Object.entries(actionModule)) {
       checkActionTypeMisMatch(action, actionClassName, actionClass);
 
-      if (action.type === actionClassName) return new actionClass(action.payload).reduce(state);
+      if (action.type === actionClassName) {
+        const ac = new actionClass(action.payload);
+        // check for ActionClasses that don't have a reducer
+        if ('reduce' in ac) {
+          return new actionClass(action.payload).reduce(state);
+        }
+      }
     }
 
     return state;

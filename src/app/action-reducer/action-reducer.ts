@@ -1,12 +1,13 @@
 import { ActionReducer } from 'src/app/action-reducer/action-reducer.lib';
 import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { map, debounceTime } from 'rxjs/operators';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { Injectable } from '@angular/core';
 
 export class ArIncrement implements ActionReducer {
   readonly type = this.constructor.name;
+
   reduce(state) {
     return state + 1;
   }
@@ -14,6 +15,7 @@ export class ArIncrement implements ActionReducer {
 
 export class ArDecrement implements ActionReducer {
   readonly type = this.constructor.name;
+
   reduce(state) {
     return state - 1;
   }
@@ -28,6 +30,7 @@ export class ArReset implements ActionReducer {
     this.actions$ &&
     this.actions$.pipe(
       ofType(new ArReset().type),
+      debounceTime(1000),
       map(() => new ArResetSuccess(99))
     );
 
@@ -35,14 +38,13 @@ export class ArReset implements ActionReducer {
     console.log('ArReset', actions$);
   }
 
-  reduce(state) {
-    return 0;
-  }
 }
 
 export class ArAddBy implements ActionReducer {
   readonly type = this.constructor.name;
-  constructor(private payload: number) {}
+
+  constructor(private payload: number) { }
+
   reduce(state) {
     return state + this.payload;
   }
