@@ -12,8 +12,8 @@ export interface ArState {
 
 export const ArInitialState: ArState = {
   count: 0,
-  loading: false
-}
+  loading: false,
+};
 
 export class ArIncrement implements ActionReducer {
   readonly type = this.constructor.name;
@@ -41,7 +41,7 @@ export class ArReset implements ActionReducer {
     this.actions$.pipe(
       ofType(new ArReset().type),
       debounceTime(1000),
-      map(() => new ArResetSuccess(99))
+      map(() => new ArResetSuccess(0))
     );
 
   constructor(private actions$?: Actions) {}
