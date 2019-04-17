@@ -5,7 +5,10 @@
 <button (click)="increment()">+</button>
 
 <h3>Combined Action/Reducer</h3>
-<div>Current Count: {{ arCount$ | async }}</div>
+<div>
+  Current Count: {{ (arCount$ | async).count }}
+  <ng-container *ngIf="(arCount$ | async).loading"> loading...</ng-container>
+</div>
 
 <button (click)="ArDecrement()">-</button> <button (click)="ArReset()">reset</button>
 <button (click)="ArIncrement()">+</button> <button (click)="ArAddBy()">+5</button>

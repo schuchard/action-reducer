@@ -5,19 +5,24 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { Injectable } from '@angular/core';
 
+export interface ARState {
+  count: number;
+  loading: false;
+}
+
 export class ArIncrement implements ActionReducer {
   readonly type = this.constructor.name;
 
-  reduce(state) {
-    return state + 1;
+  reduce(state: ARState) {
+    return { ...state, count: state.count + 1 };
   }
 }
 
 export class ArDecrement implements ActionReducer {
   readonly type = this.constructor.name;
 
-  reduce(state) {
-    return state - 1;
+  reduce(state: ARState) {
+    return { ...state, count: state.count - 1 };
   }
 }
 
@@ -36,15 +41,18 @@ export class ArReset implements ActionReducer {
 
   constructor(private actions$?: Actions) {}
 
+  reduce(state: ARState) {
+    return { ...state, loading: true };
+  }
 }
 
 export class ArAddBy implements ActionReducer {
   readonly type = this.constructor.name;
 
-  constructor(private payload: number) { }
+  constructor(private payload: number) {}
 
-  reduce(state) {
-    return state + this.payload;
+  reduce(state: ARState) {
+    return { ...state, count: state.count + this.payload };
   }
 }
 
@@ -53,7 +61,7 @@ export class ArResetSuccess implements ActionReducer {
 
   constructor(private payload?: number) {}
 
-  reduce(state) {
-    return this.payload || state;
+  reduce(state: ARState) {
+    return { ...state, count: this.payload, loading: false };
   }
 }
