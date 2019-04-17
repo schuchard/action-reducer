@@ -6,14 +6,14 @@ import { Action } from '@ngrx/store';
 import { Injectable } from '@angular/core';
 
 export class ArIncrement implements ActionReducer {
-  readonly type = ArIncrement.name;
+  readonly type = this.constructor.name;
   reduce(state) {
     return state + 1;
   }
 }
 
 export class ArDecrement implements ActionReducer {
-  readonly type = ArDecrement.name;
+  readonly type = this.constructor.name;
   reduce(state) {
     return state - 1;
   }
@@ -21,7 +21,7 @@ export class ArDecrement implements ActionReducer {
 
 @Injectable()
 export class ArReset implements ActionReducer {
-  readonly type = ArReset.name;
+  readonly type = this.constructor.name;
 
   @Effect()
   resetSuccess$: Observable<Action> =
@@ -41,7 +41,7 @@ export class ArReset implements ActionReducer {
 }
 
 export class ArAddBy implements ActionReducer {
-  readonly type = ArAddBy.name;
+  readonly type = this.constructor.name;
   constructor(private payload: number) {}
   reduce(state) {
     return state + this.payload;
@@ -49,7 +49,7 @@ export class ArAddBy implements ActionReducer {
 }
 
 export class ArResetSuccess implements ActionReducer {
-  readonly type = ArResetSuccess.name;
+  readonly type = this.constructor.name;
 
   constructor(private payload?: number) {}
 
