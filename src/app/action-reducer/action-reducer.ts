@@ -35,6 +35,7 @@ export class ArDecrement implements ActionReducer<ArState> {
 @Injectable() // necessary for Effect Module
 export class ArReset implements ActionReducer<ArState> {
   readonly type = this.constructor.name;
+  constructor(private actions$?: Actions) {}
 
   @Effect()
   resetSuccess$: Observable<Action> =
@@ -45,8 +46,6 @@ export class ArReset implements ActionReducer<ArState> {
       map(() => new ArResetSuccess(0))
     );
 
-  constructor(private actions$?: Actions) {}
-
   reduce(state: ArState) {
     return { ...state, loading: true };
   }
@@ -54,7 +53,6 @@ export class ArReset implements ActionReducer<ArState> {
 
 export class ArAddBy implements ActionReducer<ArState> {
   readonly type = this.constructor.name;
-
   constructor(private payload: number) {}
 
   reduce(state: ArState) {
@@ -64,7 +62,6 @@ export class ArAddBy implements ActionReducer<ArState> {
 
 export class ArResetSuccess implements ActionReducer<ArState> {
   readonly type = this.constructor.name;
-
   constructor(private payload?: number) {}
 
   reduce(state: ArState) {
